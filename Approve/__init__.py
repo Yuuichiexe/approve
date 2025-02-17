@@ -37,5 +37,5 @@ async def Approve_bot():
     
 
 
-loop.run_until_complete(Yumikoo_bot())
+loop.run_until_complete(Approve_bot())
 
