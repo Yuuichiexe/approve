@@ -1,10 +1,11 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message
 import asyncio
+import os
 
 # Your API Credentials
-API_ID = 20787644
-API_HASH = "9dada820698e8a5fdd5e6cc78fac8567"
+API_ID = API_ID
+API_HASH = API_HASH
 
 # Channel where requests need to be approved
 CHANNEL_USERNAME = "GameStakePredictions"  # No '@' required
