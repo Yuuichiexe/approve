@@ -1,3 +1,5 @@
+import config
+from approve import *
 from pyrogram import Client, filters
 from pyrogram.types import Message
 import asyncio
