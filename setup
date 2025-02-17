@@ -111,7 +111,7 @@ fi
 
 echo """API_ID = $api_id
 API_HASH = $api_hash
-STRING_SESSION = $string_session
+STRING_SESSION = $string_session""" > .env
 clear
 
 pprint "\n\n\nThanks for using jashan nstaller, your vars have been saved successfully ! \nIf you wanna add more variables add them in your env by : vi .env"
