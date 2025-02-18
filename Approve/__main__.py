@@ -1,4 +1,4 @@
-import config
+from config import API_ID, API_HASH, SESSION_STRING
 from pyrogram import Client, filters
 from pyrogram.types import Message
 import asyncio
