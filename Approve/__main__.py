@@ -56,5 +56,5 @@ async def approve_requests(client: Client, message: Message):
     except Exception as e:
         await message.reply_text(f"❌ Error: {str(e)}")
 
-if name == "__main__":
+if __name__ == "__main__":
     app.run()
