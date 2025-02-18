@@ -7,12 +7,13 @@ import os
 # Your API Credentials
 API_ID = API_ID
 API_HASH = API_HASH
+SESSION_STRING = SESSION_STRING
 
 # Channel where requests need to be approved
 CHANNEL_USERNAME = "GameStakePredictions"  # No '@' required
 
 # Initialize Pyrogram Bot (For Userbot, Use Session String)
-app = Client("approve_bot", api_id=API_ID, api_hash=API_HASH)
+app = Client("approve_bot", api_id=API_ID, api_hash=API_HASH, session_string=SESSION_STRING)
 
 @app.on_message(filters.command("approve"))
 async def approve_requests(client: Client, message: Message):
