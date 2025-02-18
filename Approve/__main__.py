@@ -1,4 +1,4 @@
-from config import API_ID, API_HASH, SESSION_STRING
+from config import API_ID, API_HASH, SESSION_STRING, LOG_CHANNEL_ID
 from pyrogram import Client, filters
 from pyrogram.types import Message
 import asyncio
@@ -14,6 +14,18 @@ CHANNEL_USERNAME = "GameStakePredictions"  # No '@' required
 
 # Initialize Pyrogram Bot (For Userbot, Use Session String)
 app = Client("approve_bot", api_id=API_ID, api_hash=API_HASH, session_string=SESSION_STRING)
+
+# Ensure LOG_CHANNEL_ID is defined in your config.py
+if not hasattr(config, 'LOG_CHANNEL_ID'):
+    print("Error: LOG_CHANNEL_ID is not defined in config.py")
+    exit()  # Or raise an exception
+
+async def log_error(client: Client, message: str):
+    """Sends an error message to the log channel."""
+    try:
+        await client.send_message(LOG_CHANNEL_ID, message)
+    except Exception as e:
+        print(f"Error sending log message: {e}") #Print to console if logging fails
 
 @app.on_message(filters.command("approve"))
 async def approve_requests(client: Client, message: Message):
@@ -44,7 +56,9 @@ async def approve_requests(client: Client, message: Message):
                 elif "INPUT_USER_DEACTIVATED" in error_message:
                     skipped_deactivated += 1  # Count deactivated users
                 else:
-                    await message.reply_text(f"⚠️ Error approving user {req.user.id}: {error_message}")
+                    log_message = f"⚠️ Error approving user {req.user.id}: {error_message}"
+                    await log_error(client, log_message)
+
 
         # Send final report message
         await message.reply_text(
