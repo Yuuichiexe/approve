@@ -16,9 +16,7 @@ CHANNEL_USERNAME = "GameStakePredictions"  # No '@' required
 app = Client("approve_bot", api_id=API_ID, api_hash=API_HASH, session_string=SESSION_STRING)
 
 # Ensure LOG_CHANNEL_ID is defined in your config.py
-if not hasattr(config, 'LOG_CHANNEL_ID'):
-    print("Error: LOG_CHANNEL_ID is not defined in config.py")
-    exit()  # Or raise an exception
+# Or raise an exception
 
 async def log_error(client: Client, message: str):
     """Sends an error message to the log channel."""
